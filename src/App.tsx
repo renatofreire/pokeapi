@@ -1,28 +1,49 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import styled from "styled-components";
+
 import ROUTES from "./constants/routes";
+import tokens from "./constants/tokens";
+import Header from "./view/components/Header";
+import Nav from "./view/components/Nav";
+import Pokedex from "./view/pages/Pokedex";
+import SearchPokemon from "./view/pages/SearchPokemon";
+
+const Body = styled.div`
+  display: grid;
+
+  grid-template-areas:
+    "nav header"
+    "nav content";
+
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr;
+`;
+
+const Content = styled.div`
+  grid-area: content;
+
+  padding: ${tokens.spacing.innerSpace.medium};
+  background-color: ${tokens.colors.bgLvl1};
+`;
 
 function App() {
   return (
-    <div>
-      <header>
-        <p>Poke API</p>
-      </header>
-      <nav>
-        <Link to={ROUTES.POKEDEX}>Pokedex</Link>
-        <Link to={ROUTES.SEARCH_POKEMON}>Search Pokemon</Link>
-      </nav>
-      <div>
+    <Body>
+      <Header />
+      <Nav />
+
+      <Content>
         <Switch>
           <Route exact path={ROUTES.POKEDEX}>
-            <div>Route 1</div>
+            <Pokedex />
           </Route>
           <Route exact path={ROUTES.SEARCH_POKEMON}>
-            <div>Route 2</div>
+            <SearchPokemon />
           </Route>
         </Switch>
-      </div>
-    </div>
+      </Content>
+    </Body>
   );
 }
 
