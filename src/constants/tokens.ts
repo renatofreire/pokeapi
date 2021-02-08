@@ -3,12 +3,18 @@ const rawColors = {
   pokeBlack: "#333333",
   pokeGray: "#f0f0f0",
   white: "#ffffff",
+  red: "#FF0000",
+  black: "#000000",
 };
 
 const colors = {
   bgLvl0: rawColors.pokeBlack,
   bgLvl1: rawColors.pokeGray,
   fontColorLight: rawColors.white,
+  primaryButton: rawColors.pokeRed,
+  primaryButtonHover: rawColors.red,
+  secondaryButton: rawColors.pokeBlack,
+  secondaryButtonHover: rawColors.black,
   rawColors,
 };
 
@@ -34,10 +40,15 @@ const spacing = {
   },
 };
 
+const radius = {
+  small: "4px",
+  medium: "8px",
+};
 const tokens = {
   colors,
   fonts,
   spacing,
+  radius,
 };
 
 export default tokens;
