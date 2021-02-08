@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link as LinkRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import tokens from "../../../constants/tokens";
 
@@ -14,7 +14,7 @@ export const Navigation = styled.nav`
   flex-direction: column;
 `;
 
-export const Link = styled(LinkRouter)`
+export const Link = styled(NavLink)`
   display: block;
   font: ${tokens.fonts.menu};
   text-decoration: none;
@@ -33,3 +33,7 @@ export const Img = styled.img`
   align-self: center;
   margin-bottom: ${tokens.spacing.space.large};
 `;
+
+export const activeStyle = {
+  borderLeft: `3px solid ${tokens.colors.rawColors.white}`,
+};

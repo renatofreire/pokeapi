@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-import ROUTES from "./constants/routes";
+import ROUTES, { TITLES } from "./constants/routes";
 import tokens from "./constants/tokens";
 import Header from "./view/components/Header";
 import Nav from "./view/components/Nav";
@@ -28,9 +28,11 @@ const Content = styled.div`
 `;
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <Body>
-      <Header />
+      <Header title={TITLES[pathname]} />
       <Nav />
 
       <Content>
@@ -40,6 +42,9 @@ function App() {
           </Route>
           <Route exact path={ROUTES.SEARCH_POKEMON}>
             <SearchPokemon />
+          </Route>
+          <Route exact path="/">
+            <Redirect to={ROUTES.SEARCH_POKEMON} />
           </Route>
         </Switch>
       </Content>

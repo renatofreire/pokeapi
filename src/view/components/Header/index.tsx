@@ -1,9 +1,13 @@
 import * as S from "./styled-components";
 
-const Header = () => {
+interface HeaderProps {
+  title: string;
+}
+
+const Header = ({ title }: HeaderProps) => {
   return (
     <S.Header>
-      <S.Title>Header</S.Title>
+      <S.Title>{title}</S.Title>
     </S.Header>
   );
 };
