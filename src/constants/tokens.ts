@@ -2,19 +2,25 @@ const rawColors = {
   pokeRed: "#cc3535",
   pokeBlack: "#333333",
   pokeGray: "#f0f0f0",
+  pokeBlue: "#3b4cca",
+  pokeYellow: "#ffde00",
   white: "#ffffff",
   red: "#FF0000",
   black: "#000000",
+  blue: "#0000FF",
+  yellow: "#FFFF00",
 };
 
 const colors = {
   bgLvl0: rawColors.pokeBlack,
   bgLvl1: rawColors.pokeGray,
   fontColorLight: rawColors.white,
-  primaryButton: rawColors.pokeRed,
-  primaryButtonHover: rawColors.red,
-  secondaryButton: rawColors.pokeBlack,
-  secondaryButtonHover: rawColors.black,
+  actionButton: rawColors.pokeBlue,
+  actionButtonHover: rawColors.blue,
+  negativeActionButton: rawColors.pokeRed,
+  negativeActionButtonHover: rawColors.red,
+  supportButton: rawColors.pokeBlack,
+  supportButtonHover: rawColors.black,
   rawColors,
 };
 
@@ -35,6 +41,8 @@ const spacing = {
     medium: "16px 16px",
   },
   space: {
+    verySmall: "4px",
+    small: "8px",
     medium: "16px",
     large: "32px",
   },

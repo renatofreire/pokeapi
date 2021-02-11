@@ -1,4 +1,4 @@
-import { PrimaryButton, SecondaryButton } from "../../components/Button";
+import { ActionButton, NegativeActionButton } from "../../components/Button";
 
 import * as S from "./styled-components";
 
@@ -8,8 +8,8 @@ const SearchPokemon = () => {
       <S.Label htmlFor="poke-input">Search pokemon by name or id:</S.Label>
       <S.Input id="poke-input" placeholder="Charizard" />
       <S.ButtonContainer>
-        <PrimaryButton>Search</PrimaryButton>
-        <SecondaryButton>Clear</SecondaryButton>
+        <NegativeActionButton>Clear</NegativeActionButton>
+        <ActionButton>Search</ActionButton>
       </S.ButtonContainer>
     </S.SearchForm>
   );

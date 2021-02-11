@@ -19,18 +19,26 @@ export const Button = styled.button`
   }
 `;
 
-export const PrimaryButton = styled(Button)`
-  background-color: ${tokens.colors.primaryButton};
+export const ActionButton = styled(Button)`
+  background-color: ${tokens.colors.actionButton};
 
   &:hover {
-    background-color: ${tokens.colors.primaryButtonHover};
+    background-color: ${tokens.colors.actionButtonHover};
   }
 `;
 
-export const SecondaryButton = styled(Button)`
-  background-color: ${tokens.colors.secondaryButton};
+export const NegativeActionButton = styled(Button)`
+  background-color: ${tokens.colors.negativeActionButton};
 
   &:hover {
-    background-color: ${tokens.colors.secondaryButtonHover};
+    background-color: ${tokens.colors.negativeActionButtonHover};
+  }
+`;
+
+export const SupportButton = styled(Button)`
+  background-color: ${tokens.colors.supportButton};
+
+  &:hover {
+    background-color: ${tokens.colors.supportButtonHover};
   }
 `;
