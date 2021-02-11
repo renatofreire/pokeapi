@@ -27,6 +27,10 @@ export const Input = styled.input`
   }
 `;
 
+export const ResultContainer = styled.div`
+  margin-top: ${tokens.spacing.space.medium};
+`;
+
 export const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
