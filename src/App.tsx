@@ -11,13 +11,22 @@ import SearchPokemon from "./view/pages/SearchPokemon";
 
 const Body = styled.div`
   display: grid;
-
   grid-template-areas:
     "nav header"
     "nav content";
-
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
+
+  height: 100vh;
+
+  @media (max-width: 1000px) {
+    grid-template-areas:
+      "header"
+      "content"
+      "nav";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
 `;
 
 const Content = styled.div`

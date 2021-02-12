@@ -4,12 +4,11 @@ import tokens from "../../../constants/tokens";
 
 export const Card = styled.div`
   padding: ${tokens.spacing.innerSpace.small};
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid ${tokens.colors.rawColors.pokeBlack};
   border-radius: ${tokens.radius.medium};
-  max-width: 200px;
 `;
 
 export const Title = styled.p`
