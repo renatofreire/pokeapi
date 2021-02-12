@@ -1,14 +1,19 @@
-import image from "../../assets/pokeerror.png";
-import { ActionButton, SupportButton } from "../../components/Button";
+import { ActionButton, SupportButton } from "../../components/Buttons";
 
 import * as S from "./styled-components";
 
-const PokeCard = () => {
+interface PokeCardProps {
+  name: string;
+  number: string;
+  image: string;
+}
+
+const PokeCard = ({ name, number, image }: PokeCardProps) => {
   return (
     <S.Card>
-      <S.Title>Pikachu</S.Title>
-      <S.PokeNumber>#33</S.PokeNumber>
-      <S.Img src={image} alt="" />
+      <S.Title>{name}</S.Title>
+      <S.PokeNumber>#{number}</S.PokeNumber>
+      <S.Img src={image} alt={`${name} image`} />
       <S.ButtonContainer>
         <ActionButton>Save on Pokedex</ActionButton>
 

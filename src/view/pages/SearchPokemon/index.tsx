@@ -1,5 +1,6 @@
-import { ActionButton, NegativeActionButton } from "../../components/Button";
+import { ActionButton, NegativeActionButton } from "../../components/Buttons";
 import PokeCard from "../../components/PokeCard";
+import image from "../../assets/pokeerror.png";
 
 import * as S from "./styled-components";
 
@@ -14,7 +15,7 @@ const SearchPokemon = () => {
       </S.ButtonContainer>
 
       <S.ResultContainer>
-        <PokeCard />
+        <PokeCard name="Pikachu" number="33" image={image} />
       </S.ResultContainer>
     </S.SearchForm>
   );
