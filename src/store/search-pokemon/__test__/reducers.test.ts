@@ -48,4 +48,17 @@ describe("search pokemon reducer", () => {
 
     expect(finalState).toEqual(expectedState);
   });
+
+  test("changes loading to false, pokemonResult and error to null when clear is called", () => {
+    const initialState = { ...reducer(undefined, { type: "" }) };
+    const finalState = reducer(initialState, actions.searchPokemonClear());
+
+    const expectedState = {
+      loading: false,
+      error: null,
+      pokemonResult: null,
+    };
+
+    expect(finalState).toEqual(expectedState);
+  });
 });

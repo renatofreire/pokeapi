@@ -4,7 +4,7 @@ import * as S from "./styled-components";
 
 interface PokeCardProps {
   name: string;
-  number: string;
+  number: number;
   image: string;
 }
 

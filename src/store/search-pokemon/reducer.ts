@@ -1,8 +1,8 @@
 import { ActionReturn } from "../utils/action-creator";
-import { SearcPokemonState } from "./types";
+import { SearchPokemonState } from "./types";
 import { SEARCH_POKEMON } from "./actions";
 
-const initialState: SearcPokemonState = {
+const initialState: SearchPokemonState = {
   loading: false,
   error: null,
   pokemonResult: null,
@@ -35,6 +35,14 @@ const searchPokemonReducer = (
         ...state,
         loading: false,
         error: payload,
+        pokemonResult: null,
+      };
+
+    case SEARCH_POKEMON.CLEAR:
+      return {
+        ...state,
+        loading: false,
+        error: null,
         pokemonResult: null,
       };
     default:

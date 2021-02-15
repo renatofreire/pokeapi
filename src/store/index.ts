@@ -1,12 +1,12 @@
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-import searchPokemonReducer from "./search-pokemon";
+import searchPokemon from "./search-pokemon";
 
 import rootSaga from "./sagas";
 
 const reducers = combineReducers({
-  searchPokemonReducer,
+  searchPokemon,
 });
 
 const sagaMiddleware = createSagaMiddleware();

@@ -19,7 +19,7 @@ export interface PokemonType {
   species: PokemonBasicInfo;
 }
 
-export interface SearcPokemonState {
+export interface SearchPokemonState {
   loading: boolean;
   error: string | null;
   pokemonResult: PokemonType | null;
