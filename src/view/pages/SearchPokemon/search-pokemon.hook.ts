@@ -5,6 +5,8 @@ import {
   searchPokemonSelectors,
 } from "../../../store/search-pokemon";
 
+import { PokedexActions } from "../../../store/pokedex";
+
 import type { PokemonType } from "../../../store/search-pokemon";
 
 interface useSearchPokemonScreenReturn {
@@ -16,6 +18,7 @@ interface useSearchPokemonScreenReturn {
   handleInputChange: (e: React.SyntheticEvent) => void;
   handleClearButtonClick: () => void;
   handleSearchButtonClick: () => void;
+  handleSaveButtonClick: () => void;
 }
 
 export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
@@ -43,6 +46,17 @@ export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
     dispatch(searchPokemonActions.searchPokemonRequest(inputValue));
   }
 
+  function handleSaveButtonClick() {
+    if (pokemon?.id) {
+      const pokedexPokemon = {
+        name: pokemon.name,
+        id: pokemon.id,
+        image: pokemon.image,
+      };
+      dispatch(PokedexActions.pokedexSavePokemon(pokedexPokemon));
+    }
+  }
+
   return {
     inputValue,
     inputRef,
@@ -52,5 +66,6 @@ export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
     handleInputChange,
     handleClearButtonClick,
     handleSearchButtonClick,
+    handleSaveButtonClick,
   };
 }

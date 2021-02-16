@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-dom/test-utils";
+import { useSelector } from "react-redux";
 
 import useSearchPokemonScreen from "../search-pokemon.hook";
 
@@ -57,5 +58,53 @@ describe("useSearchPokemonScreen", () => {
       type: "search-pokemon/REQUEST",
       payload: "test pokemon",
     });
+  });
+
+  it("dispatches save on pokedex action", () => {
+    (useSelector as jest.Mock).mockImplementation((callback) =>
+      callback({
+        searchPokemon: {
+          loading: false,
+          error: false,
+          pokemonResult: { name: "Vaporeon", id: 134, image: "some-image" },
+        },
+      })
+    );
+
+    const { result } = renderHook(() => useSearchPokemonScreen());
+
+    act(() => result.current.handleSaveButtonClick());
+
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "pokedex/SAVE",
+      payload: {
+        name: "Vaporeon",
+        id: 134,
+        image: "some-image",
+      },
+    });
+
+    (useSelector as jest.Mock).mockReset()();
+  });
+
+  it("does not dispatch save on pokedex action when there aren't pokemonResult", () => {
+    (useSelector as jest.Mock).mockImplementation((callback) =>
+      callback({
+        searchPokemon: {
+          loading: false,
+          error: false,
+          pokemonResult: null,
+        },
+      })
+    );
+
+    const { result } = renderHook(() => useSearchPokemonScreen());
+
+    act(() => result.current.handleSaveButtonClick());
+
+    expect(mockDispatch).toHaveBeenCalledTimes(0);
+
+    (useSelector as jest.Mock).mockReset()();
   });
 });
