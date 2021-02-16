@@ -17,6 +17,7 @@ const SearchPokemon = () => {
     handleClearButtonClick,
     handleSearchButtonClick,
     handleSaveButtonClick,
+    handleSeeMoreButtonClick,
   } = useSearchPokemonScreen();
 
   return (
@@ -52,6 +53,8 @@ const SearchPokemon = () => {
             image={pokemon.image}
             primaryButtonAction={handleSaveButtonClick}
             primaryButtonText="Save on Pokedex"
+            supportButtonAction={handleSeeMoreButtonClick}
+            supportButtonText="See more"
           />
         )}
       </S.ResultContainer>

@@ -38,12 +38,21 @@ describe("usePokedexScreen", () => {
     });
   });
 
-  it("pushes history when serach button is pressed", () => {
+  it("pushes history when search button is pressed", () => {
     const { result } = renderHook(() => usePokedexScreen());
 
     act(() => result.current?.handleSearchButtonClick());
 
     expect(mockHistory).toHaveBeenCalledTimes(1);
     expect(mockHistory).toHaveBeenCalledWith(ROUTES.SEARCH_POKEMON);
+  });
+
+  it("pushes history when see more button is pressed", () => {
+    const { result } = renderHook(() => usePokedexScreen());
+
+    act(() => result.current?.handleSeeMoreButtonClick("ponyta"));
+
+    expect(mockHistory).toHaveBeenCalledTimes(1);
+    expect(mockHistory).toHaveBeenCalledWith(`${ROUTES.INFOS}/ponyta`);
   });
 });

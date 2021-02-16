@@ -10,6 +10,7 @@ const Pokedex = () => {
     hasPokemon,
     handleRemoveButtonClick,
     handleSearchButtonClick,
+    handleSeeMoreButtonClick,
   } = usePokedexScreen();
 
   return (
@@ -23,13 +24,15 @@ const Pokedex = () => {
               image={pokemon.image}
               negativeButtonAction={() => handleRemoveButtonClick(pokemon)}
               negativeButtonText="Remove"
+              supportButtonAction={() => handleSeeMoreButtonClick(pokemon.name)}
+              supportButtonText="See more"
             />
           ))}
         </S.Container>
       ) : (
         <ErrorMessage
           text="Oh no! You don't have any pokemon on your pokedex."
-          buttonText="search pokemon"
+          buttonText="Search pokemon"
           buttonAction={handleSearchButtonClick}
         />
       )}

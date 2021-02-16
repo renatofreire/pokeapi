@@ -11,6 +11,7 @@ interface usePokedexScreenReturn {
   hasPokemon: boolean;
   handleRemoveButtonClick: (pokemon: PokemonPokedex) => void;
   handleSearchButtonClick: () => void;
+  handleSeeMoreButtonClick: (name: string) => void;
 }
 
 export default function usePokedexScreen(): usePokedexScreenReturn {
@@ -29,10 +30,15 @@ export default function usePokedexScreen(): usePokedexScreenReturn {
     history.push(ROUTES.SEARCH_POKEMON);
   }
 
+  function handleSeeMoreButtonClick(name: string) {
+    history.push(`${ROUTES.INFOS}/${name}`);
+  }
+
   return {
     pokemonList,
     hasPokemon,
     handleRemoveButtonClick,
     handleSearchButtonClick,
+    handleSeeMoreButtonClick,
   };
 }

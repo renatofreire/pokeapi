@@ -7,6 +7,7 @@ import tokens from "./constants/tokens";
 import Header from "./view/components/Header";
 import Nav from "./view/components/Nav";
 import Pokedex from "./view/pages/Pokedex";
+import PokeInfos from "./view/pages/PokeInfo";
 import SearchPokemon from "./view/pages/SearchPokemon";
 
 const Body = styled.div`
@@ -52,6 +53,11 @@ function App() {
           <Route exact path={ROUTES.SEARCH_POKEMON}>
             <SearchPokemon />
           </Route>
+
+          <Route path={ROUTES.INFOS}>
+            <PokeInfos />
+          </Route>
+
           <Route exact path="/">
             <Redirect to={ROUTES.SEARCH_POKEMON} />
           </Route>

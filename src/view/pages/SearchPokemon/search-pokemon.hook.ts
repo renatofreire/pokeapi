@@ -8,6 +8,8 @@ import {
 import { PokedexActions } from "../../../store/pokedex";
 
 import type { PokemonType } from "../../../store/search-pokemon";
+import { useHistory } from "react-router-dom";
+import ROUTES from "../../../constants/routes";
 
 interface useSearchPokemonScreenReturn {
   inputValue: string;
@@ -19,10 +21,12 @@ interface useSearchPokemonScreenReturn {
   handleClearButtonClick: () => void;
   handleSearchButtonClick: () => void;
   handleSaveButtonClick: () => void;
+  handleSeeMoreButtonClick: () => void;
 }
 
 export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -57,6 +61,12 @@ export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
     }
   }
 
+  function handleSeeMoreButtonClick() {
+    if (pokemon?.name) {
+      history.push(`${ROUTES.INFOS}/${pokemon?.name}`);
+    }
+  }
+
   useEffect(() => {
     dispatch(searchPokemonActions.searchPokemonClear());
   }, []);
@@ -71,5 +81,6 @@ export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
     handleClearButtonClick,
     handleSearchButtonClick,
     handleSaveButtonClick,
+    handleSeeMoreButtonClick,
   };
 }

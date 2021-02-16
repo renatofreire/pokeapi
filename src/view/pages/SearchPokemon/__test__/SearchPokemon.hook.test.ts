@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-dom/test-utils";
 import { useSelector } from "react-redux";
+import ROUTES from "../../../../constants/routes";
 
 import useSearchPokemonScreen from "../search-pokemon.hook";
 
@@ -8,6 +9,11 @@ const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
   useSelector: jest.fn(),
+}));
+
+const mockHistory = jest.fn();
+jest.mock("react-router-dom", () => ({
+  useHistory: () => ({ push: mockHistory }),
 }));
 
 describe("useSearchPokemonScreen", () => {
@@ -115,5 +121,41 @@ describe("useSearchPokemonScreen", () => {
     expect(mockDispatch).toHaveBeenCalledTimes(1);
 
     (useSelector as jest.Mock).mockReset()();
+  });
+
+  it("pushes history when see more button is pressed", () => {
+    (useSelector as jest.Mock).mockImplementation((callback) =>
+      callback({
+        searchPokemon: {
+          loading: false,
+          error: false,
+          pokemonResult: { name: "Vaporeon", id: 134, image: "some-image" },
+        },
+      })
+    );
+    const { result } = renderHook(() => useSearchPokemonScreen());
+
+    act(() => result.current?.handleSeeMoreButtonClick());
+
+    expect(mockHistory).toHaveBeenCalledTimes(1);
+    expect(mockHistory).toHaveBeenCalledWith(`${ROUTES.INFOS}/Vaporeon`);
+    (useSelector as jest.Mock).mockReset()();
+  });
+
+  it("does not push history when see more button is pressed and there aren pokemonResult", () => {
+    (useSelector as jest.Mock).mockImplementation((callback) =>
+      callback({
+        searchPokemon: {
+          loading: false,
+          error: false,
+          pokemonResult: null,
+        },
+      })
+    );
+    const { result } = renderHook(() => useSearchPokemonScreen());
+
+    act(() => result.current?.handleSeeMoreButtonClick());
+
+    expect(mockHistory).toHaveBeenCalledTimes(0);
   });
 });
