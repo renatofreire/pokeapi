@@ -15,6 +15,15 @@ describe("useSearchPokemonScreen", () => {
     jest.clearAllMocks();
   });
 
+  it("dispatches clear action on first render", () => {
+    renderHook(() => useSearchPokemonScreen());
+
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenLastCalledWith({
+      type: "search-pokemon/CLEAR",
+    });
+  });
+
   it("changes input value state", () => {
     const { result } = renderHook(() => useSearchPokemonScreen());
 
@@ -35,7 +44,7 @@ describe("useSearchPokemonScreen", () => {
     act(() => result.current.handleClearButtonClick());
 
     expect(result.current.inputValue).toEqual("");
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "search-pokemon/CLEAR",
     });
@@ -53,7 +62,7 @@ describe("useSearchPokemonScreen", () => {
     act(() => result.current.handleInputChange(mockEvent));
     act(() => result.current.handleSearchButtonClick());
 
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "search-pokemon/REQUEST",
       payload: "test pokemon",
@@ -75,7 +84,7 @@ describe("useSearchPokemonScreen", () => {
 
     act(() => result.current.handleSaveButtonClick());
 
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "pokedex/SAVE",
       payload: {
@@ -103,7 +112,7 @@ describe("useSearchPokemonScreen", () => {
 
     act(() => result.current.handleSaveButtonClick());
 
-    expect(mockDispatch).toHaveBeenCalledTimes(0);
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
 
     (useSelector as jest.Mock).mockReset()();
   });

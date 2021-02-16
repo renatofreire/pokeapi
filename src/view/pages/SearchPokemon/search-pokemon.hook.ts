@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   searchPokemonActions,
@@ -56,6 +56,10 @@ export default function useSearchPokemonScreen(): useSearchPokemonScreenReturn {
       dispatch(PokedexActions.pokedexSavePokemon(pokedexPokemon));
     }
   }
+
+  useEffect(() => {
+    dispatch(searchPokemonActions.searchPokemonClear());
+  }, []);
 
   return {
     inputValue,
