@@ -28,6 +28,8 @@ export const Input = styled.input`
 `;
 
 export const ResultContainer = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: ${tokens.spacing.space.medium};
 `;
 

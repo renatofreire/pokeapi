@@ -1,5 +1,7 @@
 import { ActionButton, NegativeActionButton } from "../../components/Buttons";
 import PokeCard from "../../components/PokeCard";
+import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 
 import * as S from "./styled-components";
 import useSearchPokemonScreen from "./search-pokemon.hook";
@@ -33,18 +35,23 @@ const SearchPokemon = () => {
         <ActionButton onClick={handleSearchButtonClick}>Search</ActionButton>
       </S.ButtonContainer>
 
-      {isLoading && <p>isLoading</p>}
-      {hasError && <p>hasError</p>}
+      <S.ResultContainer>
+        {isLoading && <Loading text={`Searching pokemon ${inputValue}`} />}
+        {hasError && (
+          <ErrorMessage
+            text="Pokemon not found"
+            buttonAction={handleSearchButtonClick}
+          />
+        )}
 
-      {pokemon && (
-        <S.ResultContainer>
+        {pokemon && (
           <PokeCard
             name={pokemon.name}
             number={pokemon.id}
             image={pokemon.image}
           />
-        </S.ResultContainer>
-      )}
+        )}
+      </S.ResultContainer>
     </S.SearchForm>
   );
 };
