@@ -19,6 +19,7 @@ const Pokedex = () => {
         <S.Container>
           {pokemonList.map((pokemon) => (
             <PokemonCard
+              key={pokemon.id}
               name={pokemon.name}
               number={pokemon.id}
               image={pokemon.image}

@@ -6,6 +6,7 @@ import ROUTES, { TITLES } from "./constants/routes";
 import tokens from "./constants/tokens";
 import Header from "./view/components/Header";
 import Nav from "./view/components/Nav";
+import { getFirstSegment } from "./view/helpers/url";
 import Pokedex from "./view/pages/Pokedex";
 import PokeInfos from "./view/pages/PokeInfo";
 import SearchPokemon from "./view/pages/SearchPokemon";
@@ -40,9 +41,11 @@ const Content = styled.div`
 function App() {
   const { pathname } = useLocation();
 
+  const urlSegment = getFirstSegment(pathname);
+
   return (
     <Body>
-      <Header title={TITLES[pathname]} />
+      <Header title={TITLES[`/${urlSegment}`]} />
       <Nav />
 
       <Content>

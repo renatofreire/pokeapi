@@ -40,15 +40,15 @@ const PokeCard = ({
             {primaryButtonText}
           </ActionButton>
         )}
-        {negativeButtonAction && (
-          <NegativeActionButton onClick={negativeButtonAction}>
-            {negativeButtonText}
-          </NegativeActionButton>
-        )}
         {supportButtonAction && (
           <SupportButton onClick={supportButtonAction}>
             {supportButtonText}
           </SupportButton>
+        )}
+        {negativeButtonAction && (
+          <NegativeActionButton onClick={negativeButtonAction}>
+            {negativeButtonText}
+          </NegativeActionButton>
         )}
       </S.ButtonContainer>
     </S.Card>

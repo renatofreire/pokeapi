@@ -9,6 +9,7 @@ const rawColors = {
   black: "#000000",
   blue: "#0000FF",
   yellow: "#FFFF00",
+  gray: "#777777",
 };
 
 const colors = {
@@ -26,11 +27,12 @@ const colors = {
 };
 
 const fonts = {
-  default: "normal normal 1em/1em Arial, sans-serif",
-  link: "normal bold 1em/1em bold Verdana, sans-serif",
-  menu: "normal bold 1.3em/1.3em bold Verdana, sans-serif",
+  default: "normal normal 1em/1em Verdana, sans-serif",
+  largeText: "normal normal 1.3em/1.3em Verdana, sans-serif",
+  link: "normal bold 1em/1em  Verdana, sans-serif",
+  menu: "normal bold 1.3em/1.3em  Verdana, sans-serif",
   title: "normal bold 2em/2em Verdana, sans-serif",
-  sectionTitle: "normal bold 1.3em/1.3em bold Verdana, sans-serif",
+  sectionTitle: "normal bold 1.3em/1.3em  Verdana, sans-serif",
 };
 
 const spacing = {
